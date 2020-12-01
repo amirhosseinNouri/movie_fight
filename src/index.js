@@ -12,28 +12,29 @@ const fetchData = async (searchTerm) => {
 };
 
 createAutoComplete({
-    root : document.querySelector(".autocomplete")
-})
-createAutoComplete({
-    root : document.querySelector(".autocomplete-two")
-})
-createAutoComplete({
-    root : document.querySelector(".autocomplete-three")
-})
+  root: document.querySelector(".autocomplete"),
+  renderOption(movie) {
+    const imgSrc = movie.Poster === "N/A" ? "" : movie.Poster;
+    return `
+        <img src="${imgSrc}" />
+        ${movie.Title} (${movie.Year})
+      `;
+  },
+});
 
 const onMovieSelect = async (movie) => {
-    const response = await axios.get("http://www.omdbapi.com/" , {
-        params : {
-            i : movie.imdbID,
-            apikey: "afb7bb8",
-        }
-    })
+  const response = await axios.get("http://www.omdbapi.com/", {
+    params: {
+      i: movie.imdbID,
+      apikey: "afb7bb8",
+    },
+  });
 
-    document.querySelector("#summary").innerHTML = movieTeplate(response.data)
-}
+  document.querySelector("#summary").innerHTML = movieTeplate(response.data);
+};
 
-const movieTeplate = (movieDetail) =>{
-    return `
+const movieTeplate = (movieDetail) => {
+  return `
         <article class="media">
             <figure class="media-left">
                 <p class="image">
@@ -75,5 +76,5 @@ const movieTeplate = (movieDetail) =>{
             <p class="title">${movieDetail.imdbVotes}</p>
             <p class="subtitle">IMDB Votes</p>
         </article>
-    `
-}
+    `;
+};
