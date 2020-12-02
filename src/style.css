@@ -46,3 +46,7 @@
     height: 50px;
     margin-right: 10px;
   }
+
+  .is-gray {
+    background-color: rgb(165, 161, 161);
+  }
