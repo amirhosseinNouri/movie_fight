@@ -8,6 +8,6 @@ This project is a practice for [udemy The modern javascript Bootcamp Course](htt
 
 
 # To-do
-- [] Save users's generated links, to use them again.
+- [ ] Save users's generated links, to use them again.
 
 
